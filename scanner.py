@@ -6,6 +6,7 @@ Author: Kachtel Boukhalfa
 """
 
 import subprocess
+import analyzer
 
 #demander l'adresse IP cible à l'utilisateur
 target = input("Enter target IP address: ")
@@ -24,12 +25,5 @@ result = scan.stdout
 #afficher le resultat
 print(result)
 
-#Analyser les services détectés
-if "21/tcp" in result:
-    print("[!] FTP service detected - check for anonymous login")
-
-if "80/tcp" in result:
-    print("[!] HTTP service detected - web server running")
-
-if "445/tcp" in result:
-    print("[!] SMB service detected - possible SMB vulnerabilities")
+#analyser les resultats
+analyzer.analyze_scan(result)
