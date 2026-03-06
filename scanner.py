@@ -7,6 +7,7 @@ Author: Kachtel Boukhalfa
 
 import subprocess
 import analyzer
+import report_generator
 
 #demander l'adresse IP cible à l'utilisateur
 target = input("Enter target IP address: ")
@@ -26,4 +27,8 @@ result = scan.stdout
 print(result)
 
 #analyser les resultats
-analyzer.analyze_scan(result)
+analyse = analyzer.analyze_scan(result)
+print(analyse)
+
+#création du rapport de securité
+report_generator.generate_report(target, result, analyse)
